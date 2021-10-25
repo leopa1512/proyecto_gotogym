@@ -7,7 +7,7 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from .managers import UsuarioManager
 
 class Usuario(AbstractBaseUser,PermissionsMixin):
-    dni = models.PositiveIntegerField(_('cedula'), null=True, blank=True)
+    dni = models.IntegerField(_('cedula'), null=True, blank=True)
     email = models.EmailField(_('direccion email'), max_length=254, unique=True)
     first_name = models.CharField(_('nombres'), max_length=30, blank=True)
     last_name = models.CharField(_('apellidos'), max_length=30, blank=True)
