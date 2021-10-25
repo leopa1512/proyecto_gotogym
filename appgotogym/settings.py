@@ -110,7 +110,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es-ec'
 
-TIME_ZONE = 'UTC -5'
+TIME_ZONE = 'America/Guayaquil'
 
 USE_I18N = True
 
@@ -129,8 +129,12 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 
-MEDIA_ROOT = (BASE_DIR / 'media')
+
+#import os   ##linea de prueba para subir imagen
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')    ##linea de prueba para subir imagen
+MEDIA_ROOT = (BASE_DIR / 'media')  #linea original
 MEDIA_URL = '/media/'
+
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'
@@ -139,3 +143,5 @@ LOGOUT_REDIRECT_URL = '/login/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'applogin.Usuario'

@@ -4,23 +4,29 @@ from django.utils.http import urlquote
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 
-#from .managers import UsuarioManager
+from .managers import UsuarioManager
 
 class Usuario(AbstractBaseUser,PermissionsMixin):
+    dni = models.PositiveIntegerField(_('cedula'), null=True, blank=True)
     email = models.EmailField(_('direccion email'), max_length=254, unique=True)
     first_name = models.CharField(_('nombres'), max_length=30, blank=True)
     last_name = models.CharField(_('apellidos'), max_length=30, blank=True)
+    date_birth = models.DateField(_('fecha nacimiento'), null=True)
+    num_telf = models.CharField(_('numero telefono'), max_length=20, blank=True)
+    num_cell = models.CharField(_('numero celular'), max_length=20, blank=True)
     is_staff = models.BooleanField(_('es staff'), default=False,
         help_text=_('Indica si el usuario puede iniciar sesión en admin '))
     is_active = models.BooleanField(_('activo'), default=True,
         help_text=_('Designa si este usuario debe ser tratado como activo'
                     'Deseleccione esto en lugar de eliminar cuentas.'))
     date_joined = models.DateTimeField(_('fecha registro'), default=timezone.now)
+    imagen = models.ImageField(_('imagen usuario'), upload_to='imagen_user', null=True)
+
 
     USERNAME_FIELD = 'email' ##Le decimos que el usuario sera el correo electronico
     REQUIRED_FIELDS = []
 
-    #objects = UsuarioManager()
+    objects = UsuarioManager()
 
     class Meta:
         verbose_name = _('usuario')
