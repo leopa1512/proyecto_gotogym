@@ -9,20 +9,22 @@ class UsuarioManager(BaseUserManager):
         if not email:
             raise ValueError('Debe Especificar email')
         
-        email = self.normalize_email(email)
+        email = self.normalize_email(email) #conbierte el correo a minuscula
         user = self.model(email=email,
                 is_staff=is_staff,
                 is_active=True,
-                is_superuser=is_superuser,last_login=now,
+                is_superuser=is_superuser,last_login=now,   #Se registra la fecha y hora de la sesion.
                 **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
     
+    ##se sobrescribe la creación del user
     def create_user(self,email,password=None,**extra_fields):
         return self._create_user(email,password,False,False,
         **extra_fields)
     
+    ##se sobrescribe la creación del super usuario
     def create_superuser(self,email,password,**extra_fields):
         return self._create_user(email,password,True,True,
         **extra_fields)

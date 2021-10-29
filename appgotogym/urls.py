@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('',include(('applogin.urls','applogin'), namespace='applogin')),
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),    #ruta para ingresar al panel de control
 ]
 
 ##Esta linea de DEBUD solo sirve en desarrollo

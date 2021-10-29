@@ -6,6 +6,8 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 
 from .managers import UsuarioManager
 
+##Al heredar de AbstractBaseUser define automaticamente un campo contraseña
+##PermissionsMixin permite generar los permisos de usuarios.
 class Usuario(AbstractBaseUser,PermissionsMixin):
     dni = models.IntegerField(_('cedula'), null=True, blank=True)
     email = models.EmailField(_('direccion email'), max_length=254, unique=True)
@@ -24,16 +26,16 @@ class Usuario(AbstractBaseUser,PermissionsMixin):
 
 
     USERNAME_FIELD = 'email' ##Le decimos que el usuario sera el correo electronico
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = []    #especifica los demas campos requeridos.
 
-    objects = UsuarioManager()
+    objects = UsuarioManager()  #Le indicamos que utilice la configuracion del fichero managers.py
 
     class Meta:
-        verbose_name = _('usuario')
+        verbose_name = _('usuario') #para traducir el nombre de los campos creados
         verbose_name_plural = _('usuarios')
 
     def get_absolute_url(self):
-        return "/users/%s" % urlquote(self.email)
+        return "/users/%s" % urlquote(self.email)   #se sobrescribe para que el usuario sea el correo
     
     def get_full_name(self):
         full_name = "%s %s" % (self.first_name,self.last_name) ##retorna el nombre y apellido
