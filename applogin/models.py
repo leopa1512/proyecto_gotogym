@@ -5,6 +5,8 @@ from django.utils.http import urlquote
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, User
 
+from appgotogym.settings import AUTH_USER_MODEL
+
 from .managers import UsuarioManager
 
 
@@ -62,7 +64,7 @@ class ClaseModelo(models.Model):
     estado = models.BooleanField(_('estado'),default=True)  #todos los objetos se crearan con un estado activo.
     date_crea = models.DateTimeField(_('fecha de creación'),auto_now_add=True)    #registrar la fecha de creacion.
     date_mod = models.DateTimeField(_('fecha de modificación'),auto_now=True)    #registra la fecha de la modificacion.
-    user_crea = models.ForeignKey(_('Usuaruo que crea'),User, on_delete=models.CASCADE)  #registra al usuario que crea y toma el id.
+    user_crea = models.ForeignKey(AUTH_USER_MODEL, on_delete=models.CASCADE)  #registra al usuario que crea y toma el id.
     user_mod = models.IntegerField(_('Usuario que modifica'),blank=True,null=True)
 
     class Meta:

@@ -42,8 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'applogin', ##Se agrego la aplicación
+    'applogin', ##Se agrego la aplicación para el inicio de sesion y el home
     'social_django', ##app para autenticar con facebook
+    'appcatalogo', ##se agrego la aplicacion para los catalogos
 ]
 
 MIDDLEWARE = [
