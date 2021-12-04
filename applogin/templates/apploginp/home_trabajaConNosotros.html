@@ -1,0 +1,129 @@
+{% extends "applogin/index.html" %}
+
+{% block contenido %}
+<!-- Start your project here -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-6 text-justify mb-5">
+            <h4>Trabaja con nosotros</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque minima asperiores et perspiciatis molestiae. Quo aspernatur accusantium voluptas sed cumque repellendus error aut quod repellat officiis ab, laborum nemo debitis?</p>
+            <img src="https://img.freepik.com/vector-gratis/caracter-oficina-trabajo-equipo-personas-negocios-discute-colega-dispositivos_40876-1353.jpg?size=626&ext=jpg"
+                class="img-fluid z-depth-1" alt="hoverable">
+        </div>
+        <div class="col-md-6 px-5">
+            <form action="" method="post" id="id_tnosotros">
+                {% csrf_token %}
+
+                <h4>Información de contacto</h4>
+
+                <div class="md-form">
+                    <input type="email" name="email" id="id_email" class="form-control" required>
+                    <label for="form1">E-mail</label>
+                </div>
+
+                <h4>Información Personal</h4>
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="md-form">
+                            <input type="text" name="nombre" id="id_nombre" class="form-control" required>
+                            <label for="form1">Nombre</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="md-form">
+                            <input type="text" name="apellido" id="id_apellido" class="form-control" required>
+                            <label for="form1">Apellidos</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="md-form">
+                            <input type="number" name="dni" id="id_dni" class="form-control">
+                            <label for="form1">Cédula / RUC</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <select name="pais" id="id_pais" class="browser-default custom-select" required>
+                            <option selected>País</option>
+                            <option value="Ecuador">Ecuador</option>
+                            <option value="Colombia">Colombia</option>
+                            <option value="Peru">Perú</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <select name="ciudad" id="id_ciudad" class="browser-default custom-select" required>
+                            <option selected>Ciudad</option>
+                            <option value="Cali">Cali</option>
+                            <option value="Bogota">Bogotá</option>
+                            <option value="Medellin">Medellin</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="custom-file">
+                            <input type="file" name="curriculum" id="id_curriculum" class="custom-file-input" enctype="multipart/form-data">
+                            <label class="custom-file-label" for="customFileLang" data-browse="Subir Archivo">Currículum Vitae (archivo en .pdf)</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="md-form">
+                            <input type="text" name="direccion" id="id_direccion" class="form-control">
+                            <label for="form1">Dirección</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="md-form">
+                            <input type="tel" name="telefono" id="id_telefono" class="form-control" required>
+                            <label for="form1">Teléfono / Celular</label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-mdb-color" data-toggle="modal" data-target="#">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End your project here-->
+
+<!-- Central Modal Medium Success -->
+<div class="modal fade" id="centralModalSuccess" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-notify modal-success" role="document">
+  <!--Content-->
+  <div class="modal-content">
+    <!--Header-->
+    <div class="modal-header">
+      <p class="heading lead">Felicidades</p>
+
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true" class="white-text">&times;</span>
+      </button>
+    </div>
+
+    <!--Body-->
+    <div class="modal-body">
+      <div class="text-center">
+        <i class="fas fa-check fa-4x mb-3 animated rotateIn"></i>
+        <p>Su solicitud ha sido enviada con éxito, nos contactaremos con usted a la brevedad posible</p>
+      </div>
+    </div>
+
+    <!--Footer-->
+    <div class="modal-footer justify-content-center">
+      <a type="button" class="btn btn-outline-success waves-effect" data-dismiss="modal">Aceptar</a>
+    </div>
+  </div>
+  <!--/.Content-->
+</div>
+</div>
+<!-- Central Modal Medium Success-->
+{% endblock contenido %}
+
+{% block pie_pagina %}
+{% endblock pie_pagina %}

@@ -1,0 +1,17 @@
+{% extends "applogin/index.html" %}
+
+{% block cabecera_inicio %}
+        <!-- home Navbar-->
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link text-muted" href="#!">{{ user.first_name | title }} {{ user.last_name | title }} Bienvenido.</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted" href="#!">Ayuda</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-info" href="{% url 'applogin:logout' %}">Cerrar Sesión</a>
+            </li>
+        </ul>
+        <!--/. home Navbar-->
+{% endblock cabecera_inicio %}

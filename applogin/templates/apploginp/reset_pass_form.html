@@ -1,0 +1,39 @@
+{% extends "applogin/index.html" %}
+
+{% block cabecera_inicio %}
+{% endblock cabecera_inicio %}
+
+{% block contenido %}
+<div class="PasswordResetForm">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <p>Ingrese su corre electronicpo y le enviaremos las instrucciones para recuperar la contraseña.</p>
+            <form method="post">
+                {% csrf_token %}
+
+                {% if form.non_field_errors %}
+                <div class="form-group">
+                    {{ form.non_field_errors }}
+                </div>
+                {% endif %}
+
+                {% for field in form.visible_fields %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {{ field.errors }}
+                    <div class="helpText">{{ field.help_text | safe }}</div>
+                </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-success">Recuperar Contraseña</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock contenido %}
+
+{% block registro %}
+{% endblock registro %}
+
+{% block js_page %}
+{% endblock js_page %}

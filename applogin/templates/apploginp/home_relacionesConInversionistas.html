@@ -1,0 +1,81 @@
+{% extends "applogin/index.html" %}
+
+{% block contenido %}
+<!-- Start your project here -->
+<div class="container my-5">
+    <div class="row">
+
+        <div class="col-md-6 text-justify mb-5">
+            <h4>Relaciones con Inversionistas</h4>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque minima asperiores et perspiciatis molestiae.?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque minima asperiores et perspiciatis molestiae. Quo aspernatur accusantium voluptas sed cumque repellendus error aut quod repellat officiis ab, laborum nemo debitis?</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque minima asperiores et perspiciatis molestiae. Quo aspernatur accusantium voluptas</p>
+            <img src="https://www.etacarinae.org/wp-content/uploads/2018/11/Consulenza-Tecnico-Commerciale-2.jpg"
+                class="img-fluid z-depth-1" alt="hoverable">
+        </div>
+
+        <div class="col-md-6 px-5">
+            <form action="" id="inversionistas" method="post">
+                {% csrf_token %}
+
+                <h4>Formulario</h4>
+                
+                <div class="md-form">
+                    <input type="text" name="email" id="id_email" class="form-control">
+                    <label for="form1">E-mail</label>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-6 col-md-6">
+                        <div class="md-form">
+                            <input type="text" name="nombre" id="id_nombre" class="form-control">
+                            <label for="form1">Nombre</label>
+                        </div>
+                    </div>                        
+                    <div class="col-6 col-md-6">
+                        <div class="md-form">
+                            <input type="text" name="apellido" id="id_apellido" class="form-control">
+                            <label for="form1">Apellido</label>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-md-6">
+                        <div class="md-form">
+                            <input type="text" name="trabajo" id="id_trabajo" class="form-control">
+                            <label for="form1">Trabajo</label>
+                        </div>
+                    </div>                        
+                    <div class="col-6 col-md-6">
+                        <div class="md-form">
+                            <input type="text" name="compania" id="id_compania" class="form-control">
+                            <label for="form1">Compañía</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="md-form">
+                            <input type="text" name="linkedin" id="id_linkedin" class="form-control">
+                            <label for="form1">Linkedin</label>
+                        </div>
+                    </div> 
+
+                    <div class="col-md-12">
+                        <div class="form-group shadow-textarea">
+                            <textarea class="form-control z-depth-1" name="mensaje" id="id_mensaje" rows="3" placeholder="Escriba su mensaje..."></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-12 text-center">
+                        <button class="btn btn-mdb-color">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- End your project here -->
+{% endblock contenido %}
+
+{% block pie_pagina %}
+{% endblock pie_pagina %}

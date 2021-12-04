@@ -1,0 +1,111 @@
+{% extends "applogin/index.html" %}
+
+{% block cabecera_inicio %}
+<!-- home Navbar-->
+<ul class="nav justify-content-end">
+    <li class="nav-item">
+        <a class="nav-link text-muted" href="#!">{{ user.first_name | title }} {{ user.last_name | title }} Bienvenido.</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-muted" href="#!">Ayuda</a>
+        <a class="nav-link text-muted" data-toggle="modal" data-target="#modalRegisterForm" href="#!">Registrarse</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-info" href="{% url 'applogin:logout' %}">Cerrar Sesión</a>
+    </li>
+</ul>
+<!--/. home Navbar-->
+{% endblock cabecera_inicio %}
+
+{% block contenido %}
+<form method="POST" class="form-inline">
+    {% csrf_token %}    <!--este es el token de seguridad, siempre colocarlo cuando usamos POST-->
+    <div class="col-xl-6 col-md-6 mb-6">
+        {% if obj %}
+        <div class="card border-left-warning shadow h-100 py-2">
+        {% else %}
+        <div class="card border-left-success shadow h-100 py-2">
+        {% endif %}
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            {% if obj %} Editar {% else %} Nueva {% endif %} Categoría
+                        </div>
+                        <!--desde aquí creamos el formulario-->
+                        <div class="dropdownn-divider"></div>
+                        <div class="row">
+                            <div class="col-10">
+                                <div class="input-group">
+                                    <input type="text" name="email" maxlength="100" class="form-control" required id="id_email" placeholder="Correo" 
+                                    value="{% if obj %} {{obj.username}} {% endif %}">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-group">
+                                    <label for="id_is_active">Estado</label>
+                                    <input type="checkbox" name="is_active" class="form-control" id="id_is_active" {% if obj.is_active %} checked {% endif %}>
+                                </div>
+                            </div>
+                            <!--de esta manera tambien se puede crear el formulario-->
+                            <!-- {{ form.as_p }} -->
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" class="btn btn-danger"><span class="fa fa-save"></span>Guardar</button>
+                                
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock contenido %}
+
+{% block registro %}
+<!-- ventana modal de registro -->
+<form method="POST" id="registro" class="form-inline" action="">
+    {% csrf_token %}
+    <div class="col-xl-6 col-md-6 mb-6">
+        {% if obj %}
+        <div class="card border-left-warning shadow h-100 py-2">
+        {% else %}
+        <div class="card border-left-success shadow h-100 py-2">
+        {% endif %}
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                            {% if obj %} Editar {% else %} Nueva {% endif %} Categoría
+                        </div>
+                        <!--desde aquí creamos el formulario-->
+                        
+                            <!--de esta manera tambien se puede crear el formulario-->
+                            {{ form.as_p }}
+                        </div>
+                        <div class="dropdown-divider"></div>
+                        <div class="row">
+                            <div class="col">
+                                <button type="submit" onclick="registro(); return false;" class="btn btn-danger"><span class="fa fa-save"></span>Guardar</button>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- Fin ventana modal de registro -->
+{% endblock registro %}
+
+{% block js_page %}
+<script>
+    function registro(){
+      document.getElementById('registro').submit();
+      alert("Formulario enviado desde Java Script");
+    }
+</script>
+{% endblock js_page %}

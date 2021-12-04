@@ -1,0 +1,25 @@
+/*Tipografías para título*/
+@font-face {
+    font-family: "Mystery Quest";
+    src: url("mystery-quest.woff2");
+}
+/*Tipografías para subtítulo*/
+@font-face {
+    font-family: "Norms Pro", serif;
+    src: url("TT Norms Pro Bold.otf");
+}
+/*Tipografías para cuerpo de mensaje*/
+@font-face {
+    font-family: "Roboto Slab", serif;
+    src: url("RobotoSlab-SemiBold.ttf");
+}
+/*Tipografías para cuerpo de mensaje pequeño Regular 400*/
+@font-face {
+    font-family: "Roboto Slab Regular 400", serif;
+    src: url("RobotoSlab-Regular.ttf");
+}
+
+.cuerpo{
+    background: rgb(95,137,189);
+    background: linear-gradient(90deg, rgba(95,137,189,1) 0%, rgba(32,65,91,1) 100%);
+}

@@ -1,0 +1,71 @@
+{% extends "applogin/index.html" %}
+
+{% block contenido %}
+<!-- Start your project here -->
+<div class="container my-5">
+    <div class="row">
+
+        <div class="col-md-6 text-justify mb-5">
+            <h4>Contáctanos</h4>
+            <p class="my-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque minima asperiores et perspiciatis
+                molestiae.?</p>
+
+            <h4 class="my-3">E-mail de contacto</h4>
+            <p class="mb-4">Support@gotogym.store</p>
+
+            <form id="contactanos" method="post">
+                {% csrf_token %}
+
+                <h4>Información de contacto</h4>
+
+                <div class="md-form">
+                    <input type="email" name="email" id="id_email" class="form-control validate" required>
+                    <label for="form1">E-mail</label>
+                </div>
+
+                <div class="form-group shadow-textarea my-4">
+                    <textarea class="form-control z-depth-1" name="mensaje" id="id_mensaje" rows="3"
+                        placeholder="Escriba su mensaje..." required></textarea>
+                </div>
+
+                <div class="custom-control custom-checkbox my-4">
+                    <input type="hidden" class="custom-control-input" name="agendar" id="defaultUnchecked_hidden" value='0'>
+                    <input type="checkbox" class="custom-control-input" name="agendar" id="defaultUnchecked" value='1'>
+                    <label class="custom-control-label" for="defaultUnchecked">Agendar reunión</label>
+                    <p>Seleccione la casilla si desea agendar
+                        una reunión con respecto a la consulta,
+                        se le enviará vía correo electrónico la
+                        respuesta con el medio de reunión, fecha
+                        y hora.</p>
+                </div>
+
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-mdb-color" onclick="abreModal()">Enviar</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="col-md-6 px-5 text-center ">
+            <img src="https://d25rq8gxcq0p71.cloudfront.net/dictionary-images/324/46a9df67-b05a-4fbb-8503-8ed9557bfb88.jpg"
+                class="img-fluid z-depth-1 mb-3" alt="hoverable">
+            <p>O escribenemos en nuestras redes sociales</p>
+            <!-- Facebook -->
+            <a class="fb-ic btn btn-primary">
+                <i class="fab fa-facebook-f fa-lg white-text fa-2x"> </i>
+            </a>
+            <!-- Twitter -->
+            <a class="tw-ic btn btn-info">
+                <i class="fab fa-twitter fa-lg white-text fa-2x"> </i>
+            </a>
+            <!--Instagram-->
+            <a class="ins-ic btn btn-unique">
+                <i class="fab fa-instagram fa-lg white-text fa-2x"> </i>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- End your project here -->
+{% endblock contenido %}
+
+{% block pie_pagina %}
+{% endblock pie_pagina %}

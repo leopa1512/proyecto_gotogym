@@ -1,7 +1,56 @@
 {% extends "applogin/index.html" %}
 
-{% block content-wrapper %}
-{% endblock content-wrapper %}
+{% block inicio_sesion %}
+    <!-- Llamada a la ventana modal de inicio sesion -->
+    
+            <form method="POST">
+            {% csrf_token %}
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Inicio de Sesión</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div class="md-form mb-4">
+                        <input type="email" name="username" id="id_username" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="defaultForm-email">E-mail</label>
+                    </div>
 
-{% block content %}
-{% endblock content %}
+                    <div class="md-form mb-4">
+                        <input type="password" name="password" id="id_password" class="form-control validate">
+                        <label data-error="wrong" data-success="right" for="defaultForm-pass">Contraseña</label>
+                    </div>
+                    <div class="d-flex justify-content-around mb-4">
+                        <div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
+                                <label class="custom-control-label" for="defaultLoginFormRemember">Recuerdame</label>
+                            </div>
+                        </div>
+                        <div>
+                            <a data-toggle="modal" data-target="#modalRegisterForm" href="#">¿Olvidaste la contraseña? Haz clic aquí</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn blue-gradient btn-rounded z-depth-1a">Iniciar sesión</button>
+                </div>
+                <div class="text-center my-2">
+                    <p>o inicia sesión con:</p>
+                    <a href="{% url 'social:begin' 'facebook' %}" type="button" class="btn btn-white btn-outline-info z-depth-1a light-blue-text mx-2">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a type="button" class="btn btn-white btn-outline-info z-depth-1a light-blue-text mx-2">
+                        <i class="fab fa-google"></i>
+                    </a>
+                </div>
+            </div>
+        </form>
+        
+    <!-- Fin llamada ventana modal -->
+{% endblock inicio_sesion %}
+
+{% block js_page %}
+{% endblock js_page %}

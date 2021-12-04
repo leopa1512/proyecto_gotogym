@@ -22,8 +22,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('',include(('applogin.urls','applogin'), namespace='applogin')),
+    path('',include(('applogin.urls','applogin'), namespace='applogin')),   #ruta para el fichero URLS dentro del directorio APPLIGUIN
     path('admin/', admin.site.urls),    #ruta para ingresar al panel de control
+    path('social-auth/', include('social_django.urls', namespace="social")), ##autenticacion con facebook
 ]
 
 ##Esta linea de DEBUD solo sirve en desarrollo

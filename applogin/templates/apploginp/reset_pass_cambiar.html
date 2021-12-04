@@ -1,0 +1,18 @@
+{% extends "applogin/index.html" %}
+
+{% block cabecera_inicio %}
+{% endblock cabecera_inicio %}
+
+{% block contenido %}
+<section class="PasswordResetDone">
+    <h3>Recuperación de contraseña.</h3>
+    <p>Hemos enviado un correo electrónico con las instrucciones para recuperar su contrsaseña</p>
+    <a href="{% url 'applogin:home' %}" class="btn btn-info">Home</a>
+</section>
+{% endblock contenido %}
+
+{% block registro %}
+{% endblock registro %}
+
+{% block js_page %}
+{% endblock js_page %}

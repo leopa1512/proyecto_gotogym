@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+#import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,6 +28,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+##Credenciales para autenticar con facebook.
+SOCIAL_AUTH_FACEBOOK_KEY = "1057090698447701"
+SOCIAL_AUTH_FACEBOOK_SECRET = "16ab46ce7d8ef2cc07c84dbc9c8c6d13"
+
 
 # Application definition
 
@@ -38,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'applogin', ##Se agrego la aplicación
+    'social_django', ##app para autenticar con facebook
 ]
 
 MIDDLEWARE = [
@@ -55,7 +61,7 @@ ROOT_URLCONF = 'appgotogym.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'], #Directorio donde se crearan las vistas 
+        'DIRS': [BASE_DIR / 'templates'], #Directorio donde se crearan las vistas
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -63,11 +69,32 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
 ]
 
+
+#obtener campos adicionales desde facebook
+#con esta configuracion podemos traer el email y la imagen
+
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
+
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'fields': 'id, name, email, picture.type(large), link'
+}
+
+
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
+    ('name', 'name'),
+    ('email', 'email'),
+    ('picture', 'picture'),
+    ('link', 'profile_url'),
+]
+
+##
 WSGI_APPLICATION = 'appgotogym.wsgi.application'
 
 
@@ -108,9 +135,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'es-ec'
+LANGUAGE_CODE = 'es-co'
 
-TIME_ZONE = 'America/Guayaquil'
+TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True
 
@@ -136,7 +163,8 @@ MEDIA_URL = '/media/'
 
 
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/login/'
+LOGOUT_REDIRECT_URL = '/home/'
+##LOGOUT_REDIRECT_URL = '/login/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -144,3 +172,19 @@ LOGOUT_REDIRECT_URL = '/login/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'applogin.Usuario'
+
+
+##guardar los datos de la autenticacion de facebook en las tablas.
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+##Envio de mensaje desde "Contactenos"
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.office365.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'ricardoleonardo.parrales107@comunidadunir.net'  #correo de donde saldran los mensajes
+EMAIL_HOST_PASSWORD = '1512@ngie'
+#EMAIL_CONTEXT = ssl.create_default_context()

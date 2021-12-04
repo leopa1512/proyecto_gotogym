@@ -8,7 +8,7 @@ from .forms import UserChangeForm,UserCreationForm, UsuarioChangeForm, UsuarioCr
 class UsuarioAdmin(UserAdmin):
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        (_('Personal info'), {'fields': ('dni', 'first_name', 'last_name', 'date_birth', 'num_telf', 'num_cell', 'imagen')}),
+        (_('Personal info'), {'fields': ('dni_tipo','dni', 'first_name', 'last_name', 'date_birth', 'num_telf', 'num_cell','pais','ciudad','direccion','cod_postal','imagen')}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
@@ -16,13 +16,13 @@ class UsuarioAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'password1', 'password2')}
+            'fields': ('first_name','last_name','date_birth','num_telf','email', 'password1', 'password2')}
         ),
     )
     form = UsuarioChangeForm
     add_form = UsuarioCreationForm
-    list_display = ('dni', 'email', 'first_name', 'last_name', 'date_birth', 'num_telf', 'num_cell', 'imagen', 'is_staff')
-    search_fields = ('email', 'first_name', 'last_name','dni')
+    list_display = ('dni','email','first_name','last_name','pais','is_active','is_staff')
+    search_fields = ('email','first_name','last_name','dni')
     ordering = ('email',)
 
 
