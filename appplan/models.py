@@ -35,14 +35,13 @@ class TipoPlan(ClaseModelo):
 class Contratado(ClaseModelo):
     descripcion = models.CharField(_('tipo plan'),max_length=20)
     est_pago = models.CharField(_('estado pago'),max_length=15)
-    date_contratado = models.DateTimeField(_('fecha registro'), default=timezone.now)
     date_vence = models.DateField(_('fecha vence plan'), null=True)
 
     tipoplan = models.ForeignKey(TipoPlan, on_delete=models.CASCADE)  ##Hacemos la relación con la PK del modelo TipoPlan.
     descuento = models.ForeignKey(Factura, on_delete=models.CASCADE)  ##Hacemos la relación con la PK del modelo Descuento.
 
     def __str__(self):
-        return '{}'.format(self.descripcion)
+        return '{}:{}'.format(self.user_crea.first_name, self.tipoplan.descripcion)
 
     def save(self):
         self.descripcion = self.descripcion.upper() ##Sobrescribimos para guardar todo en mayuscula

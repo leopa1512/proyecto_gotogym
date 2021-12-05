@@ -30,7 +30,7 @@ class SubCategoria(ClaseModelo):
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)  ##Hacemos la relación con la PK del modelo categoria.
     descripcion = models.CharField(
         max_length=100,
-        help_text='Descripción de la categoria',
+        help_text='Descripción de la subcategoria',
     )
 
     def __str__(self):
